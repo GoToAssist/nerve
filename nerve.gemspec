@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{A service registration daemon}
   gem.homepage      = "https://github.com/airbnb/nerve"
 
-  gem.files         = `git ls-files`.split($/)
+  gem.files         = Dir['lib/**/*.rb']
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
