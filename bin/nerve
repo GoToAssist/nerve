@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'yaml'
+require 'erb'
 require 'optparse'
 
 require 'nerve'
@@ -40,7 +41,7 @@ optparse.parse!
 def parseconfig(filename)
   # parse synapse config file
   begin
-    c = YAML::parse(File.read(filename))
+    c = YAML::parse(ERB.new(File.read(filename)).result)
   rescue Errno::ENOENT => e
     raise ArgumentError, "config file does not exist:\n#{e.inspect}"
   rescue Errno::EACCES => e
